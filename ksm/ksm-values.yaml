@@ -1,0 +1,6 @@
+image:
+  tag: v2.4.2
+resources:
+  requests:
+    memory: 100Mi
+    cpu: 50m
