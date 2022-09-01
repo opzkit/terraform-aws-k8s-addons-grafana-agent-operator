@@ -1,7 +1,7 @@
 output "addon" {
   value = {
     name : "grafana-agent-operator"
-    version : "0.24.2"
+    version : "0.26.1"
     content : local.yaml
   }
 }
