@@ -18,3 +18,9 @@ kubectl kustomize . -o grafana-agent.yaml --enable-helm
 ```
 
 Check the changes and if everything looks correct, commit, push and PR.
+
+## Upgrade notes
+### v0.26.1
+The update to version 0.26.2 changes the label selector of the
+grafana-agent-operator deployment which cannot be handled automatically.
+Pleaase remove the deployment manually before applying the new version.
