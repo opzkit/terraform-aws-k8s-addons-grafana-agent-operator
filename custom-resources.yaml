@@ -59,7 +59,7 @@ metadata:
   labels:
     app: grafana-agent
 spec:
-  image: grafana/agent:v0.26.1
+  image: grafana/agent:v0.28.0
   containers:
   - name: grafana-agent
     resources:
@@ -73,6 +73,7 @@ spec:
         cpu: 20m
   logLevel: debug
   serviceAccountName: grafana-agent
+  priorityClassName: system-node-critical
   metrics:
     instanceSelector:
       matchLabels:

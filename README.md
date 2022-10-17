@@ -6,6 +6,8 @@ with [opzkit/k8s/aws](https://registry.terraform.io/modules/opzkit/k8s/aws/lates
 
 ## How to update the module to a new version of the operator
 Update the chart-versions in grafana/kustomization.yaml and ksm/kustomization.yaml.
+Also update versions in any custom-resources that are versioned (i.e. `monitoring.grafana.com/v1alpha1/GrafanaAgent`)
+as well as the version in output.tf.
 
 Remove any existing downloaded charts:
 ```shell
