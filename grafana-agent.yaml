@@ -13066,6 +13066,7 @@ spec:
       matchLabels:
         agent: grafana-agent-metrics
   serviceAccountName: grafana-agent
+  priorityClassName: system-node-critical
 ---
 apiVersion: monitoring.grafana.com/v1alpha1
 kind: Integration
