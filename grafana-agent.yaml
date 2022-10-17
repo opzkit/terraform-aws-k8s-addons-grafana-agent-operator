@@ -12381,8 +12381,8 @@ metadata:
     app.kubernetes.io/instance: grafana-agent-operator
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: grafana-agent-operator
-    app.kubernetes.io/version: 0.27.1
-    helm.sh/chart: grafana-agent-operator-0.2.7
+    app.kubernetes.io/version: 0.28.0
+    helm.sh/chart: grafana-agent-operator-0.2.8
   name: grafana-agent-operator
   namespace: grafana-agent
 ---
@@ -12397,7 +12397,7 @@ metadata:
     app.kubernetes.io/name: kube-state-metrics
     app.kubernetes.io/part-of: kube-state-metrics
     app.kubernetes.io/version: 2.6.0
-    helm.sh/chart: kube-state-metrics-4.20.2
+    helm.sh/chart: kube-state-metrics-4.20.3
   name: ksm-kube-state-metrics
   namespace: kube-system
 ---
@@ -12442,8 +12442,8 @@ metadata:
     app.kubernetes.io/instance: grafana-agent-operator
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: grafana-agent-operator
-    app.kubernetes.io/version: 0.27.1
-    helm.sh/chart: grafana-agent-operator-0.2.7
+    app.kubernetes.io/version: 0.28.0
+    helm.sh/chart: grafana-agent-operator-0.2.8
   name: grafana-agent-operator
 rules:
 - apiGroups:
@@ -12541,7 +12541,7 @@ metadata:
     app.kubernetes.io/name: kube-state-metrics
     app.kubernetes.io/part-of: kube-state-metrics
     app.kubernetes.io/version: 2.6.0
-    helm.sh/chart: kube-state-metrics-4.20.2
+    helm.sh/chart: kube-state-metrics-4.20.3
   name: ksm-kube-state-metrics
 rules:
 - apiGroups:
@@ -12759,8 +12759,8 @@ metadata:
     app.kubernetes.io/instance: grafana-agent-operator
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: grafana-agent-operator
-    app.kubernetes.io/version: 0.27.1
-    helm.sh/chart: grafana-agent-operator-0.2.7
+    app.kubernetes.io/version: 0.28.0
+    helm.sh/chart: grafana-agent-operator-0.2.8
   name: grafana-agent-operator
 roleRef:
   apiGroup: rbac.authorization.k8s.io
@@ -12781,7 +12781,7 @@ metadata:
     app.kubernetes.io/name: kube-state-metrics
     app.kubernetes.io/part-of: kube-state-metrics
     app.kubernetes.io/version: 2.6.0
-    helm.sh/chart: kube-state-metrics-4.20.2
+    helm.sh/chart: kube-state-metrics-4.20.3
   name: ksm-kube-state-metrics
 roleRef:
   apiGroup: rbac.authorization.k8s.io
@@ -12804,7 +12804,7 @@ metadata:
     app.kubernetes.io/name: kube-state-metrics
     app.kubernetes.io/part-of: kube-state-metrics
     app.kubernetes.io/version: 2.6.0
-    helm.sh/chart: kube-state-metrics-4.20.2
+    helm.sh/chart: kube-state-metrics-4.20.3
   name: ksm-kube-state-metrics
   namespace: kube-system
 spec:
@@ -12826,8 +12826,8 @@ metadata:
     app.kubernetes.io/instance: grafana-agent-operator
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: grafana-agent-operator
-    app.kubernetes.io/version: 0.27.1
-    helm.sh/chart: grafana-agent-operator-0.2.7
+    app.kubernetes.io/version: 0.28.0
+    helm.sh/chart: grafana-agent-operator-0.2.8
   name: grafana-agent-operator
   namespace: grafana-agent
 spec:
@@ -12845,7 +12845,7 @@ spec:
       containers:
       - args:
         - --kubelet-service=default/kubelet
-        image: docker.io/grafana/agent-operator:v0.27.1
+        image: docker.io/grafana/agent-operator:v0.28.0
         imagePullPolicy: IfNotPresent
         name: grafana-agent-operator
         resources:
@@ -12864,7 +12864,7 @@ metadata:
     app.kubernetes.io/name: kube-state-metrics
     app.kubernetes.io/part-of: kube-state-metrics
     app.kubernetes.io/version: 2.6.0
-    helm.sh/chart: kube-state-metrics-4.20.2
+    helm.sh/chart: kube-state-metrics-4.20.3
   name: ksm-kube-state-metrics
   namespace: kube-system
 spec:
@@ -12882,7 +12882,7 @@ spec:
         app.kubernetes.io/name: kube-state-metrics
         app.kubernetes.io/part-of: kube-state-metrics
         app.kubernetes.io/version: 2.6.0
-        helm.sh/chart: kube-state-metrics-4.20.2
+        helm.sh/chart: kube-state-metrics-4.20.3
     spec:
       containers:
       - args:
@@ -13065,8 +13065,8 @@ spec:
     instanceSelector:
       matchLabels:
         agent: grafana-agent-metrics
-  serviceAccountName: grafana-agent
   priorityClassName: system-node-critical
+  serviceAccountName: grafana-agent
 ---
 apiVersion: monitoring.grafana.com/v1alpha1
 kind: Integration
