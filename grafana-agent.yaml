@@ -13049,7 +13049,7 @@ spec:
       requests:
         cpu: 20m
         memory: 100Mi
-  image: grafana/agent:v0.26.1
+  image: grafana/agent:v0.28.0
   integrations:
     selector:
       matchLabels:
