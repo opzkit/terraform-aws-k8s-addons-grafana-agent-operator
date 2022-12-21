@@ -13147,5 +13147,9 @@ spec:
     any: true
   pipelineStages:
   - cri: {}
+  relabelings:
+  - sourceLabels:
+    - __meta_kubernetes_pod_label_app
+    targetLabel: app
   selector:
     matchLabels: {}
