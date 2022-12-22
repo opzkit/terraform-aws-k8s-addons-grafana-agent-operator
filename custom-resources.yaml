@@ -296,8 +296,11 @@ spec:
     any: true
   selector:
     matchLabels: { }
-  # add label "app" from pod to each log row to enable tracing to logs
   relabelings:
-    - sourceLabels:
-        - __meta_kubernetes_pod_label_app
-      targetLabel: app
+  - sourceLabels:
+    - __meta_kubernetes_pod_node_name
+    targetLabel: host
+  # add label "app" from pod to each log row to enable tracing to logs
+  - sourceLabels:
+      - __meta_kubernetes_pod_label_app
+    targetLabel: app
