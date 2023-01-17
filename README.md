@@ -19,7 +19,7 @@ Run the kustomizations like below
 kubectl kustomize . -o grafana-agent.yaml --enable-helm
 ```
 
-Check the changes and if everything looks correct, commit, push and PR.
+Check the changes and if everything looks correct, update version, commit, push and PR.
 
 ## Upgrade notes
 ### v0.26.1

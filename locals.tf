@@ -1,5 +1,8 @@
 locals {
-  yaml = templatefile("${path.module}/grafana-agent.yaml", {
+  version = "0.28.2"
+  yaml = templatefile("${path.module}/custom-resources.yaml.tmpl", {
+    cluster_name         = var.cluster_name
+    external_labels      = merge({ cluster = var.cluster_name }, var.external_labels)
     logs_url             = var.logs_url
     logs_secret          = var.logs_secret
     logs_username_key    = var.logs_username_key

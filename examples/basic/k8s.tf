@@ -23,9 +23,13 @@ resource "aws_iam_role" "kubernetes_admin" {
 }
 
 module "grafana_agent" {
-  source      = "../../"
-  logs_url    = "https://somewhere.grafana.net/api/prom/push"
-  metrics_url = "https://somewhere.grafana.net/api/prom/push"
+  source       = "../../"
+  logs_url     = "https://somewhere.grafana.net/api/prom/push"
+  metrics_url  = "https://somewhere.grafana.net/api/prom/push"
+  cluster_name = local.name
+  external_labels = {
+    env_type = "test"
+  }
 }
 
 module "state_store" {
@@ -58,7 +62,5 @@ module "k8s" {
   bucket_state_store = module.state_store.bucket
   admin_ssh_key      = "../dummy_ssh_private"
   aws_oidc_provider  = true
-  extra_addons = [
-    module.grafana_agent.addon
-  ]
+  extra_addons       = module.grafana_agent.addons
 }

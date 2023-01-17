@@ -78,8 +78,12 @@ spec:
     instanceSelector:
       matchLabels:
         agent: grafana-agent-metrics
+%{~ if length(external_labels) > 0 }
     externalLabels:
-      cluster: cloud
+%{ for key, value in external_labels ~}
+      ${key}: ${value}
+%{ endfor ~}
+%{ endif ~}
   logs:
     instanceSelector:
       matchLabels:
@@ -150,7 +154,7 @@ spec:
       replacement: integrations/kubernetes/kubelet
     - action: replace
       targetLabel: cluster
-      replacement: cloud
+      replacement: ${cluster_name}
     port: https-metrics
     relabelings:
     - sourceLabels:
@@ -192,7 +196,7 @@ spec:
       replacement: integrations/kubernetes/cadvisor
     - action: replace
       targetLabel: cluster
-      replacement: cloud
+      replacement: ${cluster_name}
     path: /metrics/cadvisor
     port: https-metrics
     relabelings:
@@ -304,3 +308,4 @@ spec:
   - sourceLabels:
       - __meta_kubernetes_pod_label_app
     targetLabel: app
+
