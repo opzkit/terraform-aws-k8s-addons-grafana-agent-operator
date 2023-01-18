@@ -43,3 +43,14 @@ variable "metrics_password_key" {
   default     = "password"
   description = "Key in metrics secret containing password for Prometheus"
 }
+
+variable "cluster_name" {
+  type        = string
+  description = "Name of the cluster"
+}
+
+variable "external_labels" {
+  type        = map(string)
+  default     = {}
+  description = "External labels to be applied to Grafana Agent"
+}

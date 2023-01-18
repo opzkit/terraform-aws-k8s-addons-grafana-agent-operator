@@ -3,6 +3,5 @@ kind: Kustomization
 resources:
 - grafana
 - ksm
-- custom-resources.yaml
 patchesStrategicMerge:
 - delete-tests.yaml
