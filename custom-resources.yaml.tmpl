@@ -74,6 +74,9 @@ spec:
   logLevel: debug
   serviceAccountName: grafana-agent
   priorityClassName: system-node-critical
+  tolerations:
+  - effect: NoSchedule
+    operator: Exists    
   metrics:
     instanceSelector:
       matchLabels:
