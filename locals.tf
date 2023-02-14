@@ -1,6 +1,6 @@
 locals {
   version = "0.28.3"
-  yaml = templatefile("${path.module}/custom-resources.yaml.tmpl", {
+  yaml    = templatefile("${path.module}/custom-resources.yaml.tmpl", {
     cluster_name         = var.cluster_name
     external_labels      = merge({ cluster = var.cluster_name }, var.external_labels)
     logs_url             = var.logs_url
@@ -11,5 +11,6 @@ locals {
     metrics_secret       = var.metrics_secret
     metrics_username_key = var.metrics_username_key
     metrics_password_key = var.metrics_password_key
+    tolerations          = var.tolerations
   })
 }

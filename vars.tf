@@ -54,3 +54,14 @@ variable "external_labels" {
   default     = {}
   description = "External labels to be applied to Grafana Agent"
 }
+
+variable "tolerations" {
+  type = list(object({
+    operator : string,
+    effect : string,
+    key : optional(string),
+    value : optional(string),
+  }))
+  default     = []
+  description = "Tolerations for where to run agents"
+}
