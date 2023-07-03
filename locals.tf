@@ -1,6 +1,6 @@
 locals {
-  version = "0.28.4"
-  yaml    = templatefile("${path.module}/custom-resources.yaml.tmpl", {
+  version = "0.34.1"
+  yaml = templatefile("${path.module}/custom-resources.yaml.tmpl", {
     cluster_name         = var.cluster_name
     external_labels      = merge({ cluster = var.cluster_name }, var.external_labels)
     logs_url             = var.logs_url

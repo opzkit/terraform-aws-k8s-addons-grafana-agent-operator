@@ -31,7 +31,7 @@ module "grafana_agent" {
     env_type = "test"
   }
   # This will schedule grafana log agents on nodes with NoSchedule taints (like control-plane nodes)
-  tolerations  = [
+  tolerations = [
     {
       operator : "Exists"
       effect : "NoSchedule"
