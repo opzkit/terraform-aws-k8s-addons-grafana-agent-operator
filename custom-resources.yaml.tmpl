@@ -74,7 +74,7 @@ spec:
   logLevel: debug
   serviceAccountName: grafana-agent
   priorityClassName: system-node-critical
-%{~ if length(tolerations) > 0 }
+%{ if length(tolerations) > 0 ~}
   tolerations:
   %{~ for entry in tolerations ~}
   - effect: ${entry.effect}
