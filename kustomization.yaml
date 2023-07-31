@@ -3,5 +3,45 @@ kind: Kustomization
 resources:
 - grafana
 - ksm
-patchesStrategicMerge:
-- delete-tests.yaml
+patches:
+# TODO: Those can be removed if/when kustomize supports skipping Helm tests
+- patch: |-
+    $patch: delete
+    apiVersion: v1
+    kind: ServiceAccount
+    metadata:
+      name: grafana-agent-test-sa
+      namespace: grafana-agent
+- patch: |-
+    $patch: delete
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRole
+    metadata:
+      name: grafana-agent-test-cr
+- patch: |-
+    $patch: delete
+    apiVersion: rbac.authorization.k8s.io/v1
+    kind: ClusterRoleBinding
+    metadata:
+      name: grafana-agent-test-crb
+- patch: |-
+    $patch: delete
+    apiVersion: monitoring.grafana.com/v1alpha1
+    kind: GrafanaAgent
+    metadata:
+      name: grafana-agent-test
+      namespace: grafana-agent
+- patch: |-
+    $patch: delete
+    apiVersion: monitoring.grafana.com/v1alpha1
+    kind: MetricsInstance
+    metadata:
+      name: primary-test
+      namespace: grafana-agent
+- patch: |-
+    $patch: delete
+    apiVersion: v1
+    kind: Pod
+    metadata:
+      name: grafana-agent-test-probe
+      namespace: grafana-agent
