@@ -1,0 +1,73 @@
+sources:
+  lastGithubRelease:
+    kind: githubrelease
+    spec:
+      owner: 'grafana'
+      repository: 'agent'
+      token: '{{ requiredEnv "UPDATECLI_GITHUB_TOKEN" }}'
+      versionfilter:
+        kind: semver
+
+targets:
+  agent_image:
+    name: Bump Agent image version
+    kind: hcl
+    scmid: github
+    spec:
+      file: 'locals.tf'
+      path: 'locals.agent_version'
+    transformers:
+    - trimprefix: "v"
+  operator_image:
+    name: Bump Operator image version
+    kind: yaml
+    scmid: github
+    spec:
+      file: 'grafana/operator-values.yaml'
+      key: '$.image.tag'
+  module_version:
+    name: Bump Operator module version
+    kind: hcl
+    scmid: github
+    spec:
+      file: 'locals.tf'
+      path: 'locals.version'
+    transformers:
+    - trimprefix: "v"
+  kubectl:
+    name: run kubectl when chart values changed
+    kind: shell
+    scmid: github
+    dependson:
+    - operator_image
+    dependsonchange: true
+    disablesourceinput: true
+    spec:
+      command: "rm -rf grafana/charts ksm/charts && kubectl kustomize . -o grafana-agent.yaml --enable-helm"
+      environments:
+      - name: PATH
+
+scms:
+  github:
+    kind: "github"
+    spec:
+      user: "argoyle"
+      email: "joakim@unbound.se"
+      owner: "opzkit"
+      repository: "terraform-aws-k8s-addons-grafana-agent-operator"
+      token: '{{ requiredEnv "UPDATECLI_GITHUB_TOKEN" }}'
+      username: 'UpdateCLI'
+      branch: "main"
+#      commitusingapi: true
+
+# Define action configurations if one needs to be created
+actions:
+  addon:
+    kind: "github/pullrequest"
+    scmid: "github"
+    spec:
+      automerge: true
+      draft: false
+      labels:
+      - "dependencies"
+      title: "Update Grafana Agent Operator version"
