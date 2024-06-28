@@ -22,6 +22,8 @@ targets:
     name: Bump Operator image version
     kind: yaml
     scmid: github
+    dependson:
+    - agent_image
     spec:
       file: 'grafana/operator-values.yaml'
       key: '$.image.tag'
@@ -29,6 +31,8 @@ targets:
     name: Bump Operator module version
     kind: hcl
     scmid: github
+    dependson:
+    - operator_image
     spec:
       file: 'locals.tf'
       path: 'locals.version'
@@ -39,7 +43,7 @@ targets:
     kind: shell
     scmid: github
     dependson:
-    - operator_image
+    - module_version
     dependsonchange: true
     disablesourceinput: true
     spec:
