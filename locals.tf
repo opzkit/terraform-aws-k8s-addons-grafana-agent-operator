@@ -1,5 +1,5 @@
 locals {
-  version       = "0.41.1"
+  version       = "0.42.0"
   agent_version = "0.42.0"
   yaml = templatefile("${path.module}/custom-resources.yaml.tmpl", {
     cluster_name         = var.cluster_name
