@@ -47,7 +47,7 @@ targets:
     dependsonchange: true
     disablesourceinput: true
     spec:
-      command: "rm -rf grafana/charts ksm/charts && kubectl kustomize . -o grafana-agent.yaml --enable-helm"
+      command: "rm -rf grafana/charts ksm/charts && kubectl kustomize . -o grafana-agent.yaml --enable-helm && git diff --shortstat grafana-agent.yaml"
       environments:
       - name: PATH
 
@@ -62,7 +62,7 @@ scms:
       token: '{{ requiredEnv "UPDATECLI_GITHUB_TOKEN" }}'
       username: 'UpdateCLI'
       branch: "main"
-#      commitusingapi: true
+      commitusingapi: true
 
 # Define action configurations if one needs to be created
 actions:
