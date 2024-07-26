@@ -7377,7 +7377,7 @@ spec:
       containers:
       - args:
         - --kubelet-service=default/kubelet
-        image: docker.io/grafana/agent-operator:v0.41.1
+        image: docker.io/grafana/agent-operator:v0.42.0
         imagePullPolicy: IfNotPresent
         name: grafana-agent-operator
         resources:
