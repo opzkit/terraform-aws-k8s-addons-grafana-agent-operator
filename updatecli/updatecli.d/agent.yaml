@@ -74,4 +74,4 @@ actions:
       draft: false
       labels:
       - "dependencies"
-      title: "Update Grafana Agent Operator version"
+      title: "Update Grafana Agent Image versions"
