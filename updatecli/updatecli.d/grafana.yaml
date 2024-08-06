@@ -1,27 +1,84 @@
 sources:
-  lastRelease:
+  lastGrafanaHelmRelease:
     kind: helmchart
     spec:
       url: 'https://grafana.github.io/helm-charts'
       name: 'grafana-agent-operator'
+  lastKSMHelmRelease:
+    kind: helmchart
+    spec:
+      url: 'https://prometheus-community.github.io/helm-charts'
+      name: 'kube-state-metrics'
+  lastAgentRelease:
+    kind: githubrelease
+    spec:
+      owner: 'grafana'
+      repository: 'agent'
+      token: '{{ requiredEnv "UPDATECLI_GITHUB_TOKEN" }}'
+      versionfilter:
+        kind: semver
 
 targets:
-  chart:
+  grafana_chart:
     name: bump chart version
     kind: yaml
     scmid: github
+    sourceid: lastGrafanaHelmRelease
     spec:
       file: 'grafana/kustomization.yaml'
       key: '$.helmCharts[0].version'
     transformers:
     - addprefix: "'"
     - addsuffix: "'"
+  ksm_chart:
+    name: bump chart version
+    kind: yaml
+    scmid: github
+    sourceid: lastKSMHelmRelease
+    spec:
+      file: 'ksm/kustomization.yaml'
+      key: '$.helmCharts[0].version'
+    transformers:
+    - addprefix: "'"
+    - addsuffix: "'"
+  agent_image:
+    name: Bump Agent image version
+    kind: hcl
+    scmid: github
+    sourceid: lastAgentRelease
+    spec:
+      file: 'locals.tf'
+      path: 'locals.agent_version'
+    transformers:
+    - trimprefix: "v"
+  operator_image:
+    name: Bump Operator image version
+    kind: yaml
+    scmid: github
+    sourceid: lastAgentRelease
+    spec:
+      file: 'grafana/operator-values.yaml'
+      key: '$.image.tag'
+  module_version:
+    name: Bump Operator module version
+    kind: hcl
+    scmid: github
+    sourceid: lastAgentRelease
+    spec:
+      file: 'locals.tf'
+      path: 'locals.version'
+    transformers:
+    - trimprefix: "v"
   kubectl:
     name: run kubectl when chart changed
     kind: shell
     scmid: github
     dependson:
-    - chart
+    - grafana_chart
+    - ksm_chart
+    - agent_image
+    - operator_image
+    - module_version
     dependsonchange: true
     disablesourceinput: true
     spec:
