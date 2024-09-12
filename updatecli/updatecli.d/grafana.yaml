@@ -74,15 +74,20 @@ targets:
     kind: shell
     scmid: github
     dependson:
-    - grafana_chart
-    - ksm_chart
-    - agent_image
-    - operator_image
-    - module_version
+    - "grafana_chart:or"
+    - "ksm_chart:or"
+    - "agent_image:or"
+    - "operator_image:or"
+    - "module_version:or"
     dependsonchange: true
     disablesourceinput: true
     spec:
-      command: "rm -rf grafana/charts ksm/charts && kubectl kustomize . -o grafana-agent.yaml --enable-helm && git diff --shortstat grafana-agent.yaml"
+      command: "rm -rf grafana/charts ksm/charts && kubectl kustomize . -o grafana-agent.yaml --enable-helm"
+      changedif:
+        kind: file/checksum
+        spec:
+          files:
+          - grafana-agent.yaml
       environments:
       - name: PATH
 
@@ -109,4 +114,4 @@ actions:
       draft: false
       labels:
       - "dependencies"
-      title: "Update Grafana Agent Operator version"
+      title: "chore(deps): update Grafana Agent Operator version"
