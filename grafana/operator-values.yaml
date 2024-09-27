@@ -1,5 +1,5 @@
 image:
-  tag: v0.43.2
+  tag: v0.43.3
 resources:
   requests:
     memory: 30Mi
