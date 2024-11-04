@@ -6953,7 +6953,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: grafana-agent-operator
     app.kubernetes.io/version: 0.43.3
-    helm.sh/chart: grafana-agent-operator-0.4.4
+    helm.sh/chart: grafana-agent-operator-0.5.0
   name: grafana-agent-operator
   namespace: grafana-agent
 ---
@@ -6981,7 +6981,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: grafana-agent-operator
     app.kubernetes.io/version: 0.43.3
-    helm.sh/chart: grafana-agent-operator-0.4.4
+    helm.sh/chart: grafana-agent-operator-0.5.0
   name: grafana-agent-operator
 rules:
 - apiGroups:
@@ -7292,7 +7292,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: grafana-agent-operator
     app.kubernetes.io/version: 0.43.3
-    helm.sh/chart: grafana-agent-operator-0.4.4
+    helm.sh/chart: grafana-agent-operator-0.5.0
   name: grafana-agent-operator
 roleRef:
   apiGroup: rbac.authorization.k8s.io
@@ -7359,7 +7359,7 @@ metadata:
     app.kubernetes.io/managed-by: Helm
     app.kubernetes.io/name: grafana-agent-operator
     app.kubernetes.io/version: 0.43.3
-    helm.sh/chart: grafana-agent-operator-0.4.4
+    helm.sh/chart: grafana-agent-operator-0.5.0
   name: grafana-agent-operator
   namespace: grafana-agent
 spec:
