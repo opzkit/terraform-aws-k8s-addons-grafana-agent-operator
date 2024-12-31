@@ -6968,7 +6968,7 @@ metadata:
     app.kubernetes.io/name: kube-state-metrics
     app.kubernetes.io/part-of: kube-state-metrics
     app.kubernetes.io/version: 2.14.0
-    helm.sh/chart: kube-state-metrics-5.27.1
+    helm.sh/chart: kube-state-metrics-5.28.0
   name: ksm-kube-state-metrics
   namespace: kube-system
 ---
@@ -7079,7 +7079,7 @@ metadata:
     app.kubernetes.io/name: kube-state-metrics
     app.kubernetes.io/part-of: kube-state-metrics
     app.kubernetes.io/version: 2.14.0
-    helm.sh/chart: kube-state-metrics-5.27.1
+    helm.sh/chart: kube-state-metrics-5.28.0
   name: ksm-kube-state-metrics
 rules:
 - apiGroups:
@@ -7313,7 +7313,7 @@ metadata:
     app.kubernetes.io/name: kube-state-metrics
     app.kubernetes.io/part-of: kube-state-metrics
     app.kubernetes.io/version: 2.14.0
-    helm.sh/chart: kube-state-metrics-5.27.1
+    helm.sh/chart: kube-state-metrics-5.28.0
   name: ksm-kube-state-metrics
 roleRef:
   apiGroup: rbac.authorization.k8s.io
@@ -7336,7 +7336,7 @@ metadata:
     app.kubernetes.io/name: kube-state-metrics
     app.kubernetes.io/part-of: kube-state-metrics
     app.kubernetes.io/version: 2.14.0
-    helm.sh/chart: kube-state-metrics-5.27.1
+    helm.sh/chart: kube-state-metrics-5.28.0
   name: ksm-kube-state-metrics
   namespace: kube-system
 spec:
@@ -7396,7 +7396,7 @@ metadata:
     app.kubernetes.io/name: kube-state-metrics
     app.kubernetes.io/part-of: kube-state-metrics
     app.kubernetes.io/version: 2.14.0
-    helm.sh/chart: kube-state-metrics-5.27.1
+    helm.sh/chart: kube-state-metrics-5.28.0
   name: ksm-kube-state-metrics
   namespace: kube-system
 spec:
@@ -7417,7 +7417,7 @@ spec:
         app.kubernetes.io/name: kube-state-metrics
         app.kubernetes.io/part-of: kube-state-metrics
         app.kubernetes.io/version: 2.14.0
-        helm.sh/chart: kube-state-metrics-5.27.1
+        helm.sh/chart: kube-state-metrics-5.28.0
     spec:
       automountServiceAccountToken: true
       containers:
