@@ -1,6 +1,6 @@
 locals {
   version       = "0.44.2"
-  agent_version = "0.43.4"
+  agent_version = "0.44.2"
   yaml = templatefile("${path.module}/custom-resources.yaml.tmpl", {
     cluster_name         = var.cluster_name
     external_labels      = merge({ cluster = var.cluster_name }, var.external_labels)
