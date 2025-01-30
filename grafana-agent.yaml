@@ -6968,7 +6968,7 @@ metadata:
     app.kubernetes.io/name: kube-state-metrics
     app.kubernetes.io/part-of: kube-state-metrics
     app.kubernetes.io/version: 2.14.0
-    helm.sh/chart: kube-state-metrics-5.28.0
+    helm.sh/chart: kube-state-metrics-5.28.1
   name: ksm-kube-state-metrics
   namespace: kube-system
 ---
@@ -7079,7 +7079,7 @@ metadata:
     app.kubernetes.io/name: kube-state-metrics
     app.kubernetes.io/part-of: kube-state-metrics
     app.kubernetes.io/version: 2.14.0
-    helm.sh/chart: kube-state-metrics-5.28.0
+    helm.sh/chart: kube-state-metrics-5.28.1
   name: ksm-kube-state-metrics
 rules:
 - apiGroups:
@@ -7313,7 +7313,7 @@ metadata:
     app.kubernetes.io/name: kube-state-metrics
     app.kubernetes.io/part-of: kube-state-metrics
     app.kubernetes.io/version: 2.14.0
-    helm.sh/chart: kube-state-metrics-5.28.0
+    helm.sh/chart: kube-state-metrics-5.28.1
   name: ksm-kube-state-metrics
 roleRef:
   apiGroup: rbac.authorization.k8s.io
@@ -7336,7 +7336,7 @@ metadata:
     app.kubernetes.io/name: kube-state-metrics
     app.kubernetes.io/part-of: kube-state-metrics
     app.kubernetes.io/version: 2.14.0
-    helm.sh/chart: kube-state-metrics-5.28.0
+    helm.sh/chart: kube-state-metrics-5.28.1
   name: ksm-kube-state-metrics
   namespace: kube-system
 spec:
@@ -7377,7 +7377,7 @@ spec:
       containers:
       - args:
         - --kubelet-service=default/kubelet
-        image: docker.io/grafana/agent-operator:v0.43.4
+        image: docker.io/grafana/agent-operator:v0.44.2
         imagePullPolicy: IfNotPresent
         name: grafana-agent-operator
         resources:
@@ -7396,7 +7396,7 @@ metadata:
     app.kubernetes.io/name: kube-state-metrics
     app.kubernetes.io/part-of: kube-state-metrics
     app.kubernetes.io/version: 2.14.0
-    helm.sh/chart: kube-state-metrics-5.28.0
+    helm.sh/chart: kube-state-metrics-5.28.1
   name: ksm-kube-state-metrics
   namespace: kube-system
 spec:
@@ -7417,7 +7417,7 @@ spec:
         app.kubernetes.io/name: kube-state-metrics
         app.kubernetes.io/part-of: kube-state-metrics
         app.kubernetes.io/version: 2.14.0
-        helm.sh/chart: kube-state-metrics-5.28.0
+        helm.sh/chart: kube-state-metrics-5.28.1
     spec:
       automountServiceAccountToken: true
       containers:
