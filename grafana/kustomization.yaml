@@ -7,7 +7,7 @@ helmCharts:
 - name: grafana-agent-operator
   namespace: grafana-agent
   repo: https://grafana.github.io/helm-charts
-  version: '0.5.0'
+  version: '0.5.1'
   releaseName: grafana-agent-operator
   includeCRDs: true
   valuesFile: operator-values.yaml
