@@ -20,7 +20,7 @@ sources:
 
 targets:
   grafana_chart:
-    name: bump chart version
+    name: bump chart version to {{ source "lastGrafanaHelmRelease" }}
     kind: yaml
     scmid: github
     sourceid: lastGrafanaHelmRelease
@@ -31,7 +31,7 @@ targets:
     - addprefix: "'"
     - addsuffix: "'"
   ksm_chart:
-    name: bump chart version
+    name: bump chart version to {{ source "lastKSMHelmRelease" }}
     kind: yaml
     scmid: github
     sourceid: lastKSMHelmRelease
@@ -42,7 +42,7 @@ targets:
     - addprefix: "'"
     - addsuffix: "'"
   agent_image:
-    name: Bump Agent image version
+    name: bump Agent image version to {{ source "lastAgentRelease" }}
     kind: hcl
     scmid: github
     sourceid: lastAgentRelease
@@ -52,7 +52,7 @@ targets:
     transformers:
     - trimprefix: "v"
   operator_image:
-    name: Bump Operator image version
+    name: bump Operator image version to {{ source "lastAgentRelease" }}
     kind: yaml
     scmid: github
     sourceid: lastAgentRelease
@@ -60,7 +60,7 @@ targets:
       file: 'grafana/operator-values.yaml'
       key: '$.image.tag'
   module_version:
-    name: Bump Operator module version
+    name: bump Operator module version to {{ source "lastAgentRelease" }}
     kind: hcl
     scmid: github
     sourceid: lastAgentRelease
@@ -114,4 +114,4 @@ actions:
       draft: false
       labels:
       - "dependencies"
-      title: "chore(deps): update Grafana Agent Operator version"
+      title: 'chore(deps): update Grafana Agent Operator version to {{ source "lastAgentRelease" }}'
