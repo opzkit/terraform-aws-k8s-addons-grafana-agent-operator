@@ -34,13 +34,13 @@ module "grafana_agent" {
 
 module "state_store" {
   source           = "opzkit/kops-state-store/aws"
-  version          = "0.0.2"
+  version          = "0.5.1"
   state_store_name = "some-kops-storage-s3-bucket"
 }
 
 module "k8s-network" {
   source              = "opzkit/k8s-network/aws"
-  version             = "0.0.5"
+  version             = "0.0.11"
   name                = local.name
   region              = local.region
   public_subnet_zones = ["a", "b", "c"]
@@ -50,17 +50,16 @@ module "k8s-network" {
 module "k8s" {
   depends_on         = [module.state_store]
   source             = "opzkit/k8s/aws"
-  version            = "0.2.0"
+  version            = "0.18.4"
   name               = local.name
   region             = local.region
   dns_zone           = local.zone
-  kubernetes_version = "1.21.5"
+  kubernetes_version = "1.31.1"
   master_count       = 3
-  vpc_id             = module.k8s-network.vpc_id
+  vpc_id             = module.k8s-network.vpc.id
   public_subnet_ids  = module.k8s-network.public_subnets
-  iam_role_name      = aws_iam_role.kubernetes_admin.arn
   bucket_state_store = module.state_store.bucket
   admin_ssh_key      = "../dummy_ssh_private"
-  aws_oidc_provider  = true
   extra_addons       = module.grafana_agent.addons
+  iam_role_mappings  = {}
 }
